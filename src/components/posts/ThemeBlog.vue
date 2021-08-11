@@ -8,11 +8,12 @@
                         <div class="uk-grid-medium uk-child-width-1-2@m" data-uk-grid="masonry: true">
                             <div v-for="{ node } in $static.WordPress.posts.edges" :key="node.id">
                                 <Post :post="node"></Post>
+                                <Pagination :posts="$static.WordPress.posts" :postsQuery="postsQuery" @updatePosts="updatePosts" :limit="3"></Pagination> 
                             </div>
                         </div>
-                        <div class="pagination center">
-                                <Pagination :posts="posts" :postsQuery="postsQuery" @updatePosts="updatePosts" :limit="3"></Pagination> 
-                        </div>
+                    </div>
+                    <div class="uk-width-1-3@m">
+                        <Sidebar></Sidebar>
                     </div>
                 </div>
             </div>
@@ -71,8 +72,9 @@
 <script>
     import Post from "./PostCard";
     import Pagination from "./BlogPagination";
+    import Sidebar from ".//BlogSidebar";
     export default {
         name: "ThemeBlog",
-        components: {Post, Pagination}
+        components: {Post, Pagination, Sidebar}
     }
 </script>
