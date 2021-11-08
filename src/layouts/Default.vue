@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+      <Header></Header>
       <transition name="fade" appear>
         <main>
             <slot></slot>
@@ -11,7 +11,9 @@
 </template>
 
 <script>
+  import Header from "../components/ThemeHeader";
   export default {
-    name: "Default"
+    name: "Default",
+        components: {Header},
   }
 </script>

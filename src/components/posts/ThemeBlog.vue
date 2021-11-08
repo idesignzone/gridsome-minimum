@@ -72,7 +72,7 @@
 <script>
     import Post from "./PostCard";
     import Pagination from "./BlogPagination";
-    import Sidebar from ".//BlogSidebar";
+    import Sidebar from "./BlogSidebar";
     export default {
         name: "ThemeBlog",
         components: {Post, Pagination, Sidebar}
