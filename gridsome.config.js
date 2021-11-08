@@ -17,6 +17,14 @@ module.exports = {
     },
     {
       use: 'gridsome-plugin-uikit'
+    },
+    {
+      use: '@gridsome/plugin-critical',
+      options: {
+        paths: ['/'],
+        width: 1300,
+        height: 900
+      }
     }
   ],
 }
