@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ${htmlAttrs}>
+
+<head>
+  ${head}
+</head>
+
+<body ${bodyAttrs}>
+  <script>
+    // Add dark / light detection that runs before Vue.js load. 
+    (function () {
+      window.__onThemeChange = function () { };
+      function setTheme(newTheme) {
+        window.__theme = newTheme;
+        preferredTheme = newTheme;
+        document.documentElement.setAttribute('class', newTheme);
+        // document.body.setAttribute('data-theme', newTheme);
+        window.__onThemeChange(newTheme);
+      }
+
+      var preferredTheme;
+      try {
+        preferredTheme = localStorage.getItem('theme');
+      } catch (err) { }
+
+      window.__setPreferredTheme = function (newTheme) {
+        setTheme(newTheme);
+        try {
+          localStorage.setItem('theme', newTheme);
+        } catch (err) { }
+      }
+
+      var darkQuery = window.matchMedia('(prefers-color-scheme: uk-light)');
+
+      darkQuery.addListener(function (e) {
+        window.__setPreferredTheme(e.matches ? 'uk-light' : 'uk-dark');
+      });
+
+      setTheme(preferredTheme || (darkQuery.matches ? 'uk-light' : 'uk-dark'));
+
+    })();
+
+  </script>
+  ${app}
+  ${scripts}
+</body>
+
+</html>
