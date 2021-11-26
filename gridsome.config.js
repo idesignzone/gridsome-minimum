@@ -10,7 +10,7 @@ module.exports = {
     {
       use: '@gridsome/source-graphql',
       options: {
-        url: "https://gridbox-admin.idesignzone.com/graphql",
+        url: "https://gridbox-admin-free.idesignzone.com/graphql",
         fieldName: 'WordPress',
         typeName: ''
       },
